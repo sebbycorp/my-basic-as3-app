@@ -5,57 +5,32 @@
   "declaration": {
     "class": "ADC",
     "schemaVersion": "3.0.0",
-    "id": "lmnop543421",
-    "label": "Sample 4",
-    "remark": "An HTTP and an HTTPS application",
-    "controls": {
-      "trace": true
-    },
-    "Sample_http_04": {
+    "id": "123abc",
+    "label": "Sample 2",
+    "remark": "HTTPS with predictive-node pool",
+    "JuiceShop": {
       "class": "Tenant",
       "A1": {
         "class": "Application",
         "service": {
-          "class": "Service_HTTP",
-          "virtualAddresses": [
-            "10.0.9.10"
-          ],
-          "pool": "gce_pool"
-        },
-        "gce_pool": {
-          "class": "Pool",
-          "monitors": [
-            "http"
-          ],
-          "members": [{
-            "servicePort": 80,
-            "serverAddresses": [
-              "192.0.7.10",
-              "192.0.7.11"
-            ]
-          }]
-        }
-      },
-      "A2": {
-        "class": "Application",
-        "service": {
           "class": "Service_HTTPS",
           "virtualAddresses": [
-            "10.0.9.20"
+            "10.10.1.100"
           ],
           "pool": "web_pool",
           "serverTLS": "webtls"
         },
         "web_pool": {
           "class": "Pool",
+          "loadBalancingMode": "predictive-node",
           "monitors": [
             "http"
           ],
           "members": [{
-            "servicePort": 80,
+            "servicePort": 3000,
             "serverAddresses": [
-              "192.0.9.10",
-              "192.0.9.11"
+              "10.10.1.99",
+              "10.10.1.98"
             ]
           }]
         },
